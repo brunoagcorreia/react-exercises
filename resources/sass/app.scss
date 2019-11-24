@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    .navbar {
+        .nav-item {
+            span.timer {
+                border: none !important;
+                color: #fff;
+            }
+        }
+    }
+    .table {
+        width: 100%;
+        min-width: 100%;
+        td {
+            .table {
+                td {
+                    margin: 0;
+                    padding: 0;
+
+                    button {
+                        margin: 0.2rem;
+                        padding: 0 0.3rem;
+                    }
+                }
+            }
+        }
+    }
+    form {
+        Select {
+            display: inline-block;
+            clear: none;
+        }
+    }
+}

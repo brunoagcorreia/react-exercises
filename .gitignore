@@ -1,0 +1,6 @@
+/js
+/css
+/node_modules
+npm-debug.log
+yarn-error.log
+/.htaccess
