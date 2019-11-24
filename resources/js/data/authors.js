@@ -1,6 +1,6 @@
 
 export function getAuthors() {
-    return axios.get(apiUrl + '/api/author')
+    return axios.get(apiURL + '/api/author')
         .then(response => {
             return response.data
         }).catch(err => {

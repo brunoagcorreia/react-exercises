@@ -43,3 +43,12 @@ html, body {
         }
     }
 }
+.link {
+    cursor: pointer;
+    color: #1f6fb2;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        color: #3f9ae5;
+    }
+}
