@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 class Msg extends React.Component {
     constructor (props) {
         super (props);
+        console.info('props');
+        console.info(props);
 
         this.state = {
             msg: 'Hello Wold',
