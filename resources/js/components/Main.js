@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import Test from './Test'
 
-class Main extends Component {
+class Main extends React.Component {
     render () {
         return (
             <BrowserRouter>

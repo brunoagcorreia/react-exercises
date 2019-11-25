@@ -20,7 +20,7 @@ class Test extends Component {
         this.setState({ msg: e.target.value })
     }
     componentDidMount () {
-        this.state.iID = setInterval(() => this.timer(this), 1000);
+        this.state.iID = setInterval(this.timer, 1000);
     }
 
     componentWillUnmount () {
