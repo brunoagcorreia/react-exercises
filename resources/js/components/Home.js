@@ -2,12 +2,13 @@ import React from 'react'
 import {Provider} from "react-redux";
 import { createStore } from 'redux';
 import Msg from "./Msg";
+import MyStore from "../inc/constants";
 
 const initialState = {
     msg: "Message from redux store",
 };
 function reducer(state = initialState, action) {
-    if(action.type === "UPDATE_MSG") {
+    if(action.type === MyStore.UPDATE_MSG) {
         return {
             msg: action.msg
         };

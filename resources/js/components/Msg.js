@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import MyStore from '../inc/constants'
 
 class Msg extends React.Component {
     constructor (props) {
@@ -8,33 +9,35 @@ class Msg extends React.Component {
         console.info(props);
 
         this.state = {
-            msg: 'Hello Wold',
+            msg: 'Hallo Welt',
         };
         this.change = this.change.bind(this);
     }
 
     change(e) {
-//        this.setState({ msg: e.target.value })
+        this.setState({ msg: e.target.value })
+/*
         this.props.dispatch({
-            type: 'UPDATE_MSG',
+            type: MyStore.UPDATE_MSG,
             msg: e.target.value
         });
+ */
     }
 
     render () {
-        document.title = this.props.msg;
+        document.title = this.state.msg;
 
         if(this.props.withInput) {
             return (
                 <div className="msg">
-                    <span>{this.props.msg}</span>
+                    <span>{this.state.msg}</span>
                     <p>
-                        <input onChange={this.change} placeholder={this.props.placeholder || 'new Message'} />
+                        <input onChange={this.change} placeholder={this.state.placeholder || 'new Message'} />
                     </p>
                 </div>
             )
         } else {
-            return (<span>{this.props.msg}</span>)
+            return (<span>{this.state.msg}</span>)
         }
     }
 }
@@ -46,6 +49,6 @@ function mapStateToProps(state) {
 }
 
 // Then replace this:
-//export default Msg
+export default Msg
 // With this:
-export default connect(mapStateToProps)(Msg);
+//export default connect(mapStateToProps)(Msg);
