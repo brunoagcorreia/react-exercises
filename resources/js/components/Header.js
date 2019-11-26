@@ -19,7 +19,7 @@ const Header = () => (
 
         <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-                <Time className="nav-link" preText="Es ist" afterText="Uhr" />
+                <Time preText="Es ist" afterText="Uhr" />
             </li>
         </ul>
 
