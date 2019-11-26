@@ -26,10 +26,10 @@ const store = createStore(
 class Home extends React.Component {
 
     componentDidMount() {
-        $('#app').on('counter-alarm', function (evt) {
+        $('#app').on('counter-alarm', function (evt, {count}) {
             $('#zähler').css({color:'#f00'}).html('Zähler Alarm');
             console.info('counter-alarm listener');
-            console.info(evt);
+            console.info(count);
 
         });
     }

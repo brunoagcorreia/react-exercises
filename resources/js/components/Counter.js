@@ -13,9 +13,7 @@ class Counter extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if( this.state.count == 5 ) {
-            $("#app").trigger('counter-alarm', {
-                 count: this.state.count
-            });
+            $("#app").trigger('counter-alarm', [{count: this.state.count}]);
             console.info('counter-alarm trigger')
         }
         else {
