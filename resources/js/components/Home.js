@@ -3,6 +3,7 @@ import {Provider} from "react-redux";
 import { createStore } from 'redux';
 import Msg from "./Msg";
 import MyStore from "../inc/constants";
+import Time from "./Time";
 
 const initialState = {
     msg: "Message from redux store",
@@ -17,6 +18,7 @@ function reducer(state = initialState, action) {
 }
 const store = createStore(
     reducer,
+    // only for activating firefox add-on "Redux DevTools" if installed
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
@@ -33,7 +35,8 @@ class Home extends React.Component {
                     </div>
                     <div className="col">
                         <div className="float-right">
-                            <h1><Msg/></h1>
+                            <h1><Msg /></h1>
+                            <h1><Time/></h1>
                         </div>
                     </div>
                 </div>
