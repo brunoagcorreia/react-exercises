@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import Msg from "./Msg";
 import MyStore from "../inc/constants";
 import Time from "./Time";
+import Counter from "./Counter";
 
 const initialState = {
     msg: "Message from redux store",
@@ -24,6 +25,15 @@ const store = createStore(
 
 class Home extends React.Component {
 
+    componentDidMount() {
+        $('#app').on('counter-alarm', function (evt) {
+            $('#zähler').css({color:'#f00'}).html('Zähler Alarm');
+            console.info('counter-alarm listener');
+            console.info(evt);
+
+        });
+    }
+
     render () {
         return (
             <Provider store={store}>
@@ -37,7 +47,9 @@ class Home extends React.Component {
                         <div className="float-right">
                             <h1><Msg /></h1>
                             <h1><Time/></h1>
+                            <Counter />
                         </div>
+                        <h1 id="zähler">Zähler</h1>
                     </div>
                 </div>
             </Provider>

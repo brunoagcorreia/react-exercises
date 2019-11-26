@@ -5,9 +5,6 @@ import MyStore from '../inc/constants'
 class Msg extends React.Component {
     constructor (props) {
         super (props);
-        console.info('props');
-        console.info(props);
-
         this.state = {
             msg: 'Hallo Welt',
         };
