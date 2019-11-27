@@ -30,7 +30,6 @@ class Home extends React.Component {
             $('#zähler').css({color:'#f00'}).html('Zähler Alarm');
             console.info('counter-alarm listener');
             console.info(count);
-
         });
     }
 

@@ -4,6 +4,9 @@ import { getMovie } from '../../data/movies'
 class MovieShow extends React.Component {
     constructor(props) {
         super(props);
+
+        console.info(props);
+
         this.state = {
             movie: {
                 id: '',
@@ -15,7 +18,7 @@ class MovieShow extends React.Component {
             }
         }
     }
-
+/*
     getMovieData() {
         getMovie(this.props.match.params.id)
             .then((data) => {
@@ -29,9 +32,9 @@ class MovieShow extends React.Component {
     componentDidMount() {
         this.getMovieData()
     }
-
+*/
     render() {
-        const movie = this.state.movie;
+        const movie = this.props.location.movie;
         return (
             <div>
                 <table className="table">
