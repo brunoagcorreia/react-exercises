@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class EmailField extends React.Component {
+class PasswordField extends React.Component {
     constructor (props) {
         super(props)
     }
@@ -16,12 +16,12 @@ class EmailField extends React.Component {
                 <label htmlFor={this.props.name} className="col-md-2 col-form-label">{this.props.name}</label>
                 <div className="col-md-auto">
                     <input className="px-1"
-                           type="email"
-                           id={this.props.name}
-                           name={this.props.name}
-                           className="form-control"
-                           defaultValue={this.props.setValue}
-                           onChange={this.onFieldChange.bind(this)}
+                       type="password"
+                       id={this.props.name}
+                       name={this.props.name}
+                       className="form-control"
+                       defaultValue={this.props.setValue}
+                       onChange={this.onFieldChange.bind(this)}
                     />
                     <span className="d-block invalid-feedback" role="alert">
                         <strong>{this.props.error || ''}</strong>
@@ -31,4 +31,4 @@ class EmailField extends React.Component {
         )
     }
 }
-export default EmailField
+export default PasswordField
