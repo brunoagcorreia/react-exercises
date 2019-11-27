@@ -16,3 +16,12 @@ export function getMovie(id) {
             return err;
         })
 }
+
+export function updateMovie(id, data) {
+    return axios.put(apiURL + '/api/movie/' + id, data)
+        .then(response => {
+            return response.data
+        }).catch(err => {
+            return err;
+        })
+}

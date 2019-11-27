@@ -6,6 +6,8 @@ import Home from './Home'
 import Movies from './Movies'
 import MovieShow from "./movie/show";
 import Counter from "./Counter";
+import MovieEdit from "./movie/edit";
+import MovieForm from "./form/MovieForm";
 
 class Main extends Component {
     render () {
@@ -17,6 +19,7 @@ class Main extends Component {
                         <Route exact path='/' component={Home} />
                         <Route path='/counter' component={Counter} />
                         <Route path='/movies' component={Movies} />
+                        <Route path='/movie/edit/:id' component={MovieForm} />
                         <Route path='/movie/:id' component={MovieShow} />
                     </Switch>
                 </div>

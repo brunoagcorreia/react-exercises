@@ -22,6 +22,13 @@ class MovieRow extends React.Component {
                     >{movie.title}</Link>
                 </td>
                 <td>{movie.price}</td>
+                <td>
+                    <Link className="btn btn-primary" to={{
+                        pathname: `/movie/edit/${movie.id}`,
+                        movie: movie,
+                    }}
+                    >Edit</Link>
+                </td>
             </tr>
         )
     }
