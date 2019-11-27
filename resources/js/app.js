@@ -12,7 +12,6 @@ require('./bootstrap');
  */
 window.axios = require('axios');
 //window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
 
 window.axios.defaults = {
     ...window.axios.defaults,
@@ -21,7 +20,6 @@ window.axios.defaults = {
         common: {
             ...window.axios.defaults.headers.common,
             "X-Requested-With": "XMLHttpRequest",
-            "X-CSRF-Token": csrfToken,
         }
     },
     baseURL: "http://videostore.loc",

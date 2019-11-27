@@ -6,10 +6,9 @@ import Home from './Home'
 import Movies from './Movies'
 import MovieShow from "./movie/show";
 import Counter from "./Counter";
-import MovieEdit from "./movie/edit";
 import MovieForm from "./form/MovieForm";
 import LoginForm from "./form/LoginForm";
-import {connect, Provider} from "react-redux";
+import {Provider} from "react-redux";
 import { createStore } from 'redux';
 import MyStore from "../inc/constants";
 
@@ -41,7 +40,7 @@ class Main extends Component {
 
     constructor(props) {
         super(props);
-        console.info(props)
+        console.info(store)
     }
 
     render () {
