@@ -7,11 +7,15 @@ import {createMovie} from "../../data/movies";
 class CreateMovieForm extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {};
+        this.state = {
+            author_id: '',
+            title: '',
+            price: '',
+        };
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(e) {
-        createMovie()
+        createMovie(this.state)
             .then(response => {
                 console.info(response);
                 // todo: handle validation errors from API response
@@ -20,9 +24,9 @@ class CreateMovieForm extends React.Component {
                         errors: response.errors,
                         messages: response.messages,
                     });
-                    return;
+
                 }
-                this.props.history.push(`/movies`)
+//                this.props.history.push(`/movies`)
             }).catch(err => {
                 console.error(err)
         });
@@ -34,12 +38,17 @@ class CreateMovieForm extends React.Component {
         this.setState({[field]: value});
     }
     render() {
-            return (
+        const author = {
+            id: 0,
+            fullname: '',
+        };
+
+        return (
                 <div>
                     <h3>Create Movie Form</h3>
                     <form id="frmMovie" name="frmMovie" onSubmit={this.onSubmit}>
                         <AuthorSelect
-                            defaultValue=""
+                            defaultValue={author}
                             onChange={this.onChange.bind(this)}
                         />
                         <TextField name="title" onChange={this.onChange.bind(this)} />
