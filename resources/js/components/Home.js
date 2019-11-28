@@ -1,28 +1,8 @@
 import React from 'react'
-//import {Provider} from "react-redux";
-//import { createStore } from 'redux';
 import Msg from "./Msg";
-import MyStore from "../inc/constants";
 import Time from "./Time";
 import Counter from "./Counter";
-/*
-const initialState = {
-    msg: "Message from redux store",
-};
-function reducer(state = initialState, action) {
-    if(action.type === MyStore.UPDATE_MSG) {
-        return {
-            msg: action.msg
-        };
-    }
-    return state;
-}
-const store = createStore(
-    reducer,
-    // only for activating firefox add-on "Redux DevTools" if installed
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-*/
+
 class Home extends React.Component {
 
     componentDidMount() {

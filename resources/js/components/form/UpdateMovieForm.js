@@ -1,10 +1,8 @@
-
 import React from "react"
 import AuthorSelect from "./fields/AuthorSelect";
 import TextField from "./fields/TextField";
 import ButtonField from "./fields/ButtonField";
 import {updateMovie} from "../../data/movies";
-
 
 class UpdateMovieForm extends React.Component {
     constructor (props) {

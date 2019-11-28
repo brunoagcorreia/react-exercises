@@ -7,11 +7,7 @@ import {createMovie} from "../../data/movies";
 class CreateMovieForm extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {
-            author_id: '',
-            title: '',
-            price: '',
-        };
+        this.state = {};
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(e) {
@@ -24,15 +20,21 @@ class CreateMovieForm extends React.Component {
                         errors: response.errors,
                         messages: response.messages,
                     });
-
+                    return;
                 }
-//                this.props.history.push(`/movies`)
+                this.props.history.push(`/movies`)
             }).catch(err => {
-                console.error(err)
+            console.error(err)
         });
         e.preventDefault()
     }
-
+    componentDidMount() {
+        const formData = $('#frmMovie').serializeArray().reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        this.setState(formData)
+    }
     onChange(field, value) {
         // parent class change handler is always called with field name and value
         this.setState({[field]: value});

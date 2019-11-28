@@ -1,3 +1,4 @@
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 export function getMovies() {
@@ -6,7 +7,7 @@ export function getMovies() {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }
@@ -17,7 +18,7 @@ export function getMovie(id) {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }
@@ -28,18 +29,18 @@ export function updateMovie(id, data) {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }
 
 export function createMovie(data) {
-    return iAxios.post('/api/movie/', data)
+    return iAxios.post('/api/movie', data)
         .then(response => {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }
@@ -50,7 +51,7 @@ export function deleteMovie(id, data) {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }

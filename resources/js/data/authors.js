@@ -1,3 +1,4 @@
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 export function getAuthors() {
@@ -6,7 +7,7 @@ export function getAuthors() {
             return response.data
         }).catch(err => {
             if(err.response && 401 == err.response.status) {
-                return (<Redirect to="/" />)
+                return (<Redirect to="/login" />)
             }
         })
 }

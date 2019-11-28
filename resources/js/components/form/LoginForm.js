@@ -24,12 +24,18 @@ class LoginForm extends React.Component {
                 this.setState({auth: response.data});
                 this.props.dispatch({
                     type: MyStore.AUTH,
-                    auth: this.state.auth,
+                    auth: response.data,
                 });
-                $("#app").trigger('logged-in', [this.state.auth]);
-                console.info(this.props.history);
-//                this.props.history.push(`/movies`)
-                this.props.history.goBack()
+//                $("#app").trigger('logged-in', [this.state.auth]);
+                console.log('redux auth');
+                if(this.props.auth) {
+                    console.log('is auth')
+                } else {
+                    console.log('is NOT auth')
+                }
+
+
+                this.props.history.push('/movies')
             }).catch(err => {
                 console.error(err)
             });

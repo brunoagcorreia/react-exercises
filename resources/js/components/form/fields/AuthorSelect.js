@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { getAuthors } from '../../../data/authors'
 
 class AuthorSelect extends Component {
+
     constructor (props) {
         super(props);
         this.state = {
@@ -11,15 +12,16 @@ class AuthorSelect extends Component {
     }
 
     componentDidMount () {
-        getAuthors().then(response => {
-            this.setState({
-                authors: response
-            });
-            return response
-        }).catch(err => {
-            console.error("author err: " + err);
-            return err;
-        })
+        getAuthors()
+            .then(response => {
+                this.setState({
+                    authors: response
+                });
+                return response
+            }).catch(err => {
+                console.error("author err: " + err);
+                return err;
+            })
     }
 
     handleChange(selectedOption) {
@@ -34,6 +36,9 @@ class AuthorSelect extends Component {
     }
 
     render () {
+        if(!this.state.authors) {
+            return (<div><h3>No Authors available!</h3></div>)
+        }
         const options = this.state.authors.map(function (author) {
             return { value: author.id, label: author.fullname };
         });

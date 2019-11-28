@@ -1,3 +1,5 @@
+import RootStore from "./store/root-store";
+
 require('./bootstrap');
 
 //window.apiURL = "http://videostore.loc";
@@ -20,28 +22,18 @@ window.iAxios = window.axios.create({
     maxRedirects: 5,
 });
 
-$("#app").on("logged-in", (evt, data) => {
-    console.info("on logged-in");
-    let loginTime = (new Date()).getTime();
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Main from './components/Main'
+import { Provider } from 'react-redux'
+import rootStore from './store/root-store'
 
-    console.info(data);
-    localStorage.setItem('auth_expires_in', data.expires_in);
-    localStorage.setItem('auth_token', data.access_token);
-    localStorage.setItem('auth_user', data.user.name);
+console.log('rootStore');
+console.log(rootStore.getState());
 
-    window.iAxios = axios.create({
-        ...window.iAxios.defaults,
-        headers: {
-            ...window.iAxios.defaults.headers,
-            common: {
-                ...window.iAxios.defaults.headers.common,
-                'Authorization': 'Bearer ' + data.access_token,
-            }
-        },
-    });
-    $("#app").trigger("storage-ready", [iAxios])
-});
-
-export default window.iAxios
-
-require('./components/Main');
+ReactDOM.render(
+    <Provider store={rootStore}>
+        <Main />
+    </Provider>,
+    document.getElementById('app')
+);

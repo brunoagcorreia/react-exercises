@@ -1,7 +1,8 @@
 import React from 'react'
 import MovieRow from "./row";
-import { withRouter, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 class MovieList extends React.Component {
     constructor(props) {
@@ -11,6 +12,9 @@ class MovieList extends React.Component {
             mustLogin: false,
         };
         this.getMovieList = this.getMovieList.bind(this)
+    }
+    componentDidMount() {
+        this.getMovieList()
     }
 
     getMovieList () {
@@ -26,10 +30,6 @@ class MovieList extends React.Component {
                     this.setState({mustLogin: true})
                 }
             })
-    }
-
-    componentDidMount() {
-        this.getMovieList()
     }
 
     render() {
@@ -66,4 +66,10 @@ class MovieList extends React.Component {
         }
     }
 }
-export default MovieList
+//export default MovieList
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    };
+};
+export default connect(mapStateToProps)(MovieList);
