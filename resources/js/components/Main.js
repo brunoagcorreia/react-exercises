@@ -11,6 +11,7 @@ import LoginForm from "./form/LoginForm";
 import {Provider} from "react-redux";
 import { createStore } from 'redux';
 import MyStore from "../inc/constants";
+import CreateMovieForm from "./form/CreateMovieForm";
 
 const initialState = {
     auth: null,
@@ -55,6 +56,7 @@ class Main extends Component {
                             <Route path='/counter' component={Counter} />
                             <Route path='/movies' component={Movies} />
                             <Route path='/movie/edit/:id' component={MovieForm} />
+                            <Route path='/movie/edit' component={CreateMovieForm} />
                             <Route path='/movie/:id' component={MovieShow} />
                         </Switch>
                     </div>

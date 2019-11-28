@@ -1,6 +1,7 @@
 import React from 'react'
 import {getMovies} from "../../data/movies";
 import MovieRow from "./row";
+import {Link} from "react-router-dom";
 
 class MovieList extends React.Component {
     constructor(props) {
@@ -28,13 +29,19 @@ class MovieList extends React.Component {
     render () {
         return (
             <div>
+                <div className="col float-right text-right" style={{ marginBottom:'10px' }}>
+                    <Link className="btn btn-primary" to={{
+                        pathname: `/movie/edit`,
+                    }}
+                    >Create Movie</Link>
+                </div>
                 <table className="table table-striped">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Author</th>
                         <th>Title</th>
-                        <th>Price</th>
+                        <th colSpan={2}>Price</th>
                     </tr>
                     </thead>
                     <tbody>
