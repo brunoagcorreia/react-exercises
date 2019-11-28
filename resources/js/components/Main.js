@@ -6,11 +6,11 @@ import Home from './Home'
 import Movies from './Movies'
 import MovieShow from "./movie/show";
 import Counter from "./Counter";
-import MovieForm from "./form/MovieForm";
 import LoginForm from "./form/LoginForm";
 import {Provider} from "react-redux";
 import { createStore } from 'redux';
 import MyStore from "../inc/constants";
+import UpdateMovieForm from "./form/UpdateMovieForm";
 import CreateMovieForm from "./form/CreateMovieForm";
 
 const initialState = {
@@ -41,7 +41,15 @@ class Main extends Component {
 
     constructor(props) {
         super(props);
-        console.info(store)
+    }
+
+    componentDidMount() {
+        $("#app").on("storage-ready", () => {
+            console.info('auth in main');
+            const authToken     = localStorage.getItem('auth_token');
+            const authUser      = localStorage.getItem('auth_user');
+            const authExpiresIn = localStorage.getItem('auth_expires_in')
+        })
     }
 
     render () {
@@ -55,7 +63,7 @@ class Main extends Component {
                             <Route path='/login' component={LoginForm} />
                             <Route path='/counter' component={Counter} />
                             <Route path='/movies' component={Movies} />
-                            <Route path='/movie/edit/:id' component={MovieForm} />
+                            <Route path='/movie/edit/:id' component={UpdateMovieForm} />
                             <Route path='/movie/edit' component={CreateMovieForm} />
                             <Route path='/movie/:id' component={MovieShow} />
                         </Switch>

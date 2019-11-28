@@ -6,7 +6,7 @@ import ButtonField from "./fields/ButtonField";
 import {updateMovie} from "../../data/movies";
 
 
-class MovieForm extends React.Component {
+class UpdateMovieForm extends React.Component {
     constructor (props) {
         super(props);
         this.state = {};
@@ -17,7 +17,7 @@ class MovieForm extends React.Component {
             .then(response => {
                 console.info(response);
                 // todo: handle validation errors from API response
-                if(response.errors) {
+                if(response && response.errors) {
                     this.setState({
                         errors: response.errors,
                         messages: response.messages,
@@ -27,7 +27,7 @@ class MovieForm extends React.Component {
                 this.props.history.push(`/movies`)
             }).catch(err => {
                 console.error(err)
-        });
+            });
         e.preventDefault()
     }
     componentDidMount() {
@@ -69,4 +69,4 @@ class MovieForm extends React.Component {
     }
 }
 
-export default MovieForm
+export default UpdateMovieForm

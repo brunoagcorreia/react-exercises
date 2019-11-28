@@ -1,9 +1,12 @@
+import { Redirect } from 'react-router-dom'
 
 export function getAuthors() {
-    return axios.get(apiURL + '/api/author')
+    return iAxios.get('/api/author')
         .then(response => {
             return response.data
         }).catch(err => {
-            return err;
+            if(err.response && 401 == err.response.status) {
+                return (<Redirect to="/" />)
+            }
         })
 }

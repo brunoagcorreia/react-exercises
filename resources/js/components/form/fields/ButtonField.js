@@ -10,8 +10,8 @@ class ButtonField extends React.Component {
     }
     render() {
         return (
-            <div className="form-group row mb-0">
-                <div className="col-md-4 my-3">
+            <div className="form-group row mb-0 ml-2">
+                <div className="my-3">
                     <button type={this.state.type || 'button'} className="btn btn-primary col-md-12">
                         {this.state.label}
                     </button>

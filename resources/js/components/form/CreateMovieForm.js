@@ -11,11 +11,11 @@ class CreateMovieForm extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(e) {
-        createMovie(this.state)
+        createMovie()
             .then(response => {
                 console.info(response);
                 // todo: handle validation errors from API response
-                if(response.errors) {
+                if(response && response.errors) {
                     this.setState({
                         errors: response.errors,
                         messages: response.messages,
@@ -28,13 +28,7 @@ class CreateMovieForm extends React.Component {
         });
         e.preventDefault()
     }
-    componentDidMount() {
-        const formData = $('#frmMovie').serializeArray().reduce(function(obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
-        this.setState(formData)
-    }
+
     onChange(field, value) {
         // parent class change handler is always called with field name and value
         this.setState({[field]: value});

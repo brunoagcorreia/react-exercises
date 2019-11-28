@@ -19,14 +19,17 @@ class LoginForm extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(e) {
-        axios.post(apiURL + '/api/auth/login', this.state.form)
+        iAxios.post('/api/auth/login', this.state.form)
             .then(response => {
                 this.setState({auth: response.data});
                 this.props.dispatch({
                     type: MyStore.AUTH,
                     auth: this.state.auth,
                 });
-                this.props.history.push(`/home`)
+                $("#app").trigger('logged-in', [this.state.auth]);
+                console.info(this.props.history);
+//                this.props.history.push(`/movies`)
+                this.props.history.goBack()
             }).catch(err => {
                 console.error(err)
             });

@@ -1,20 +1,12 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-window.axios = require('axios');
-//window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+//window.apiURL = "http://videostore.loc";
+window.loginTime = null;
 
-window.axios.defaults = {
+window.axios = require('axios');
+window.iAxios = window.axios.create({
     ...window.axios.defaults,
+    baseURL: 'http://videostore.loc',
     headers: {
         ...window.axios.defaults.headers,
         common: {
@@ -22,12 +14,34 @@ window.axios.defaults = {
             "X-Requested-With": "XMLHttpRequest",
         }
     },
-    baseURL: "http://videostore.loc",
     timeout: 5000,
     responseType: 'json',
     withCredentials: false,
     maxRedirects: 5,
-};
-window.apiURL = "http://videostore.loc";
+});
+
+$("#app").on("logged-in", (evt, data) => {
+    console.info("on logged-in");
+    let loginTime = (new Date()).getTime();
+
+    console.info(data);
+    localStorage.setItem('auth_expires_in', data.expires_in);
+    localStorage.setItem('auth_token', data.access_token);
+    localStorage.setItem('auth_user', data.user.name);
+
+    window.iAxios = axios.create({
+        ...window.iAxios.defaults,
+        headers: {
+            ...window.iAxios.defaults.headers,
+            common: {
+                ...window.iAxios.defaults.headers.common,
+                'Authorization': 'Bearer ' + data.access_token,
+            }
+        },
+    });
+    $("#app").trigger("storage-ready", [iAxios])
+});
+
+export default window.iAxios
 
 require('./components/Main');
